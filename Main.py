@@ -12,15 +12,8 @@ import datetime as dt
 import jqdatasdk as jq
 import time
 
-
 global TOKEN
-
-TOKEN = '5014a3a9fe4aa0d8ce0189c8090b553ffb66ddfd16f4417d219f7804'
-
-# income_sheet_items = [var[0] for var in pd.read_csv('D:\pythons\MyDataBase\income_sheet.txt').values]
-# balance_sheet_items = [var[0] for var in pd.read_csv('D:\pythons\MyDataBase\balance_sheet.txt').values]
-# cashflow_sheet_items = [var[0] for var in pd.read_csv('D:\pythons\MyDataBase\cashflow_sheet.txt').values]
-
+TOKEN = your token # some of tushre data need > 500 credits
 
 class my_database(object):
     '''
@@ -31,7 +24,10 @@ class my_database(object):
         return
 
     def activate(self, database='chinaasharestock'):
-        connect = create_engine("mysql+pymysql://root:{0}@127.0.0.1:3306/".format('N_surrender')+database)
+        '''
+        database is your database name
+        '''
+        connect = create_engine("mysql+pymysql://root:{0}@127.0.0.1:3306/".format(your password)+database)
         return connect
 
 def base_data_panel():
@@ -95,6 +91,8 @@ def base_data_panel():
     # update log
     update_info = pd.DataFrame({'update': today}, index=[int(today)])
     update_info.to_sql('UpdateLog', connection, if_exists='append')
+    
+    return None
 
 def rehability():
     '''
